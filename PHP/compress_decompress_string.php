@@ -12,6 +12,20 @@
     }
     return ($compress);
   }
+
+function decompressString($str){
+	$decompress = "";
+	$strsplit = str_split($str);//split the string so each character is an array item
+	for($i=0;$i<count($strsplit);$i++){
+		if(is_numeric($strsplit[$i])){
+			$decompress.=str_repeat($strsplit[$i-1],($strsplit[$i]-1));
+		}else{
+			$decompress.=$strsplit[$i];
+		}
+	}
+	return ($decompress);
+}
+
   
   $str = "abbcccdddddeef";
   echo compressString($str);
